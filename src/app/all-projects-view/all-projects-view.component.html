@@ -1,0 +1,5 @@
+<app-header></app-header>
+<ng-container *ngFor="let project of projects">
+  <app-project [title]="project.title"
+               [todos]="project.todos"></app-project>
+</ng-container>
