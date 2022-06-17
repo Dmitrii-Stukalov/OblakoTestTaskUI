@@ -1,5 +1,8 @@
-<app-header></app-header>
-<ng-container *ngFor="let project of projects">
-  <app-project [title]="project.title"
-               [todos]="project.todos"></app-project>
-</ng-container>
+<app-header [projects]="projects"></app-header>
+<div>
+  <ng-container *ngFor="let project of projects">
+    <app-project [title]="project.title"
+                 [projectId]="project.id"
+                 [todos]="project.todos"></app-project>
+  </ng-container>
+</div>

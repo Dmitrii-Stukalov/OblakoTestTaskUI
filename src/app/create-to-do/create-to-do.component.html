@@ -1,1 +1,23 @@
-<p>create-to-do-component works!</p>
+<h1 mat-dialog-title>Новая задача</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Название задачи..." [(ngModel)]="creationData.taskName">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Категория" [(ngModel)]="selectedCategory">
+      <ng-container *ngFor="let project of data">
+        <mat-option value="{{project.title}}">{{project.title}}</mat-option>
+      </ng-container>
+      <mat-option value="new">Новая категория</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field *ngIf="selectedCategory === 'new'">
+    <input matInput placeholder="Название категории..." [(ngModel)]="creationData.category">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Отмена</button>
+  <button mat-button [mat-dialog-close]="creationData" (click)="createTodo()" cdkFocusInitial>Ок</button>
+</div>

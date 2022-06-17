@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Todo} from "../../todo";
+import {Todo} from "../models/todo";
+import {ProjectService} from "../services/project.service";
 
 @Component({
   selector: 'app-project',
@@ -13,9 +14,16 @@ export class ProjectComponent implements OnInit {
   @Input()
   public title: string | undefined;
 
-  constructor() { }
+  @Input()
+  public projectId: number | undefined;
+
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit(): void {
+    console.log(this.todos);
   }
 
+  toggleStatus(todoId: number) {
+    this.projectService.toggleStatus(this.projectId, todoId).subscribe(() => {});
+  }
 }

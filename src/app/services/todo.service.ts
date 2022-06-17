@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Project} from "../project";
 import {Observable} from "rxjs";
+import {CreationData} from "../models/creation-data";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService {
+export class TodoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getAllProjects(): Observable<Project[]> {
-    return this.httpClient.get<Project[]>('http://0.0.0.0:3000/projects');
+  public addTodo(data: CreationData): Observable<void> {
+    return this.httpClient.post<void>(`http://0.0.0.0:3000/todos`, data);
   }
 }

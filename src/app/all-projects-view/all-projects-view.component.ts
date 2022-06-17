@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Project} from "../../project";
-import {ProjectService} from "../project.service";
-import {TodoService} from "../../todo.service";
+import {Project} from "../models/project";
+import {ProjectService} from "../services/project.service";
+import {TodoService} from "../services/todo.service";
 
 @Component({
   selector: 'app-all-projects-view',
@@ -17,10 +17,10 @@ export class AllProjectsViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProjects();
+    this.projectService.emitter.subscribe(() => this.getAllProjects());
   }
 
   private getAllProjects() {
     this.projectService.getAllProjects().subscribe(projects => this.projects = projects);
   }
-
 }

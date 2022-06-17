@@ -1,0 +1,7 @@
+div {
+  display: flex;
+}
+
+app-project {
+  width: 30%;
+}
