@@ -13,10 +13,10 @@ export class ProjectService {
   }
 
   public getAllProjects(): Observable<Project[]> {
-    return this.httpClient.get<Project[]>('https://stukalov-oblako-ui.herokuapp.com/projects');
+    return this.httpClient.get<Project[]>('https://stukalov-oblako.herokuapp.com/projects');
   }
 
   public toggleStatus(projectId: number | undefined, todoId: number): Observable<void> {
-    return this.httpClient.patch<void>(`https://stukalov-oblako-ui.herokuapp.com/projects/${projectId}/todos/${todoId}`, null);
+    return this.httpClient.patch<void>(`https://stukalov-oblako.herokuapp.com/projects/${projectId}/todos/${todoId}`, null);
   }
 }
